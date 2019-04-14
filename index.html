@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/tooplate-style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="//script.sheetsu.com/"></script>
 
 
     <title>Fresh Patch</title>
@@ -97,7 +98,7 @@
                             <div class="form-group mb-0 text-right">
                                 <button type="submit" class="btn tm-btn-primary tm-send-btn">Send</button>
                             </div>
-                
+
                         </form>
 
 <!--                         <form sheetsu="https://sheetsu.com/apis/v1.0su/5fcad7f746e3">
@@ -107,7 +108,7 @@
 
   <textarea name="comment"></textarea>
 
-  <input type="submit"> 
+  <input type="submit">
 </form> -->
                         <!-- <iframe src="https://sheetsu.com/a/f/5fcad7f746e3?embedded=true"
 width="100%" height="600" frameBorder="0"
@@ -120,6 +121,12 @@ style="background: transparent; border: 1px solid #dedede;"></iframe> -->
 
   <input type="submit">
 </form> -->
+
+<form id="myForm">
+   <input type="text" name="first_name">
+   <input type="text" name="score">
+   <button type="submit">Save</button>
+ </form>
 
 <!-- <div class="row" sheetsu="https://sheetsu.com/apis/v1.0/YOUR_ID">
   <div class="col-4">
@@ -155,6 +162,29 @@ style="background: transparent; border: 1px solid #dedede;"></iframe> -->
             speed: 800
         });
 
+
+            document.querySelector("#myForm").addEventListener("submit", function(e) {
+              e.preventDefault();
+              saveData();
+            });
+
+            function saveData() {
+              // Get data from inputs
+              var first_name = document.getElementsByName("first_name")[0].value,
+                  score = document.getElementsByName("score")[0].value;
+
+              // Prepare JSON to be send
+              var data = { name: first_name, score: score };
+
+              // Save data to a spreadsheet
+              // Arguments
+              // 1 - API URL
+              // 2 - JSON representation of a row you want to save
+              // 3 - options
+              // 4 - callback function after successful save
+              Sheetsu.write("https://sheetsu.com/apis/v1.0/020b2c0f/", data, {})
+                .then(function(x) {console.log(x);}, function(e) {console.log(e)});
+            }
     </script>
 </body>
 <script src="//load.sheetsu.com"></script>
