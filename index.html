@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/tooplate-style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="//script.sheetsu.com/"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
     <title>Fresh Patch</title>
@@ -85,7 +85,7 @@
                     <div class="col-xl-4 col-lg-4 tm-flex-center-v tm-section-left">
                       <h3>Fresh Patch App is coming to your city!</h3>
 
-                        <form action="mailto:sisball8@yahoo.com"  enctype="multipart/form-data" name="cityName" class="tm-contact-form" method="POST">
+                        <!-- <form action="mailto:sisball8@yahoo.com"  enctype="multipart/form-data" name="cityName" class="tm-contact-form" method="POST">
                             <div class="form-group mb-4">
                                 <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required/>
                             </div>
@@ -97,12 +97,27 @@
                             </div>
                             <div class="form-group mb-0 text-right">
                                 <button type="submit" class="btn tm-btn-primary tm-send-btn">Send</button>
+                            </div> -->
+                            <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off" class="tm-contact-form" >
+<div class="form-group mb-4">
+                                <input id="nameField" name="entry.762203491" class="form-control" placeholder="name" type="text" required>
+                              </div>
+                              <div class="form-group mb-4">
+                              <input id="emailField" name="entry.728390397" placeholder="email" class="form-control" type="email" required>
                             </div>
+                            <div class="form-group mb-5">
 
-                        </form>
+                              <input id="cityField" name="entry.1794684035" placeholder="city" class="form-control" type="text" required>
+                            </div>
+                            <div class="form-group mb-0 text-right">
 
+                              <input id="commentField" name="entry.1516382056" placeholder="anything else you wanna say?" class="form-control" type="text">
+                            </div>
+                            <br>
+                              <button id="send" type="submit" class="btn tm-btn-primary tm-send-btn">Sumbit</button>
+                            </form>
 
-<form sheetsu="https://sheetsu.com/apis/v1.0su/5fcad7f746e3">
+<!-- <form sheetsu="https://sheetsu.com/apis/v1.0su/5fcad7f746e3">
   <input type="text" name="name">
   <input type="text" name="email">
   <input type="text" name="city">
@@ -110,15 +125,15 @@
   <textarea name="comment"></textarea>
 
   <input type="submit">
-</form>
+</form> -->
 
-<form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off">
-    <input id="nameField" name="entry.2008660880" placeholder="enter your name" type="text" required>
-  <input id="emailField" name="entry.1460631936" placeholder="enter your email" type="email" required>
-  <input id="cityField" name="entry.904964149" placeholder="what's your city?" type="text" required>
-  <input id="commentField" name="entry.1878256062" placeholder="anything else you wnna say?" type="text">
+<!-- <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off">
+    <input id="nameField" name="entry.762203491" placeholder="enter your name" type="text" required>
+  <input id="emailField" name="entry.728390397" placeholder="enter your email" type="email" required>
+  <input id="cityField" name="entry.1794684035" placeholder="what's your city?" type="text" required>
+  <input id="commentField" name="entry.1516382056" placeholder="anything else you wnna say?" type="text">
   <button id="send" type="submit" class="common_btn">Sumbit</button>
-</form>
+</form> -->
 <h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color:#fff"> Your Request has been posted to Google Spreadsheet</h3>
 
 
@@ -174,7 +189,7 @@ function postToGoogle() {
 
                 $.ajax({
                     url: "https://docs.google.com/forms/d/e/1FAIpQLSffqUwOGEpsWVeCkIkhqzfDiGrs7VO8tF7mAZTV0StpM__epw/formResponse?",
-					data: {"entry.2008660880": field1, "entry.1460631936": field2, "entry.904964149": field3, "entry.1878256062": field4},
+					data: {"entry.762203491": field1, "entry.728390397": field2, "entry.1794684035": field3, "entry.1516382056": field4},
                     type: "POST",
                     dataType: "xml",
                     success: function(d)
@@ -192,5 +207,4 @@ function postToGoogle() {
             }
 </script>
 </body>
-<script src="//load.sheetsu.com"></script>
 </html>
